@@ -11,6 +11,7 @@ const Header = () => {
   const [signUp1, setSignUp1] = useState(true)
   const [signUp2, setSignUp2] = useState(false)
   const userName = useSelector((state: UserState) => state.firstName)
+  const id1 = useSelector((state: UserState) => state.id)
   const id = useSelector((state: UserState) => state.id)
   const dispatch = useDispatch()
 
@@ -41,7 +42,7 @@ const Header = () => {
       <Link href='/'>
         <p className="text-[#176d73] xs:text-3xl absolute top-2 ml-8 text-4xl">HotelBooking</p>
       </Link>
-      {userName === '' ? (
+      {id1 === "" ? (
         <>
         <button className="text-[#176d73] md:w-[100px] absolute xs:w-[100px] top-4 ml-[1100px] text-xl" onClick={handleOpen}>
           Sign Up
