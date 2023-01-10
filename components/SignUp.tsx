@@ -28,7 +28,7 @@ const SignUp = ({ handleOpen, handleStep }: any) => {
     <div className='absolute w-screen xs:w-[1517px] xs:h-[3300px] top-0 bg-[#000000d5] z-10 h-screen
     md:w-[1520px] md:h-[2300px]'>
       <div className='h-[570px] md:w-[750px] md:h-[800px] w-[500px] xs:w-[750px] xs:ml-[360px] xs:h-[800px] 
-      xs:mt-[700px] bg-[#bff3f6] ml-[360px] md:mt-[620px] mt-16 rounded-3xl'>
+      xs:mt-[700px] bg-[#bff3f6] ml-[480px] md:mt-[620px] mt-16 rounded-3xl'>
         <p className='absolute text-3xl ml-[190px] xs:ml-[340px] md:ml-[340px] mt-8 text-[#176d73]'>Sign Up</p>
         <AiOutlineClose className='absolute text-[#176d73] xs:ml-[670px] md:ml-[670px] mt-8 
         ml-[450px] text-2xl' onClick={handleOpen}/>

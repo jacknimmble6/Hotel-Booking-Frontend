@@ -35,7 +35,7 @@ const SignUp2 = ({ handleOpen }: any) => {
   return (
     <div className='absolute xs:w-[1517px] xs:h-[3300px] w-screen md:w-[1520px] md:h-[2300px] 
     top-0 bg-[#000000d5] z-10 h-screen'>
-      <div className='h-[670px] md:w-[750px] md:h-[800px] w-[500px] bg-[#bff3f6] ml-[500px] mt-4 rounded-3xl
+      <div className='h-[670px] md:w-[750px] md:h-[800px] w-[500px] bg-[#bff3f6] ml-[480px] mt-4 rounded-3xl
       xs:w-[750px] xs:ml-[360px] xs:h-[800px] xs:mt-[700px] md:ml-[360px] md:mt-[620px]'>
         <p className='absolute text-3xl xs:ml-[200px] md:ml-[200px] w-[350px] text-center ml-[75px] 
         mt-[40px] text-[#176d73]'>
