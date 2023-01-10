@@ -22,6 +22,7 @@ const Searchbar = (hotel: any) => {
   
   }, [])
 
+  
   const increase = () => {
     dispatch({ type: 'addGuests' })
   }
