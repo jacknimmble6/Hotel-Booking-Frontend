@@ -4,16 +4,19 @@ import SignUp from './SignUp';
 import SignUp2 from './SignUp2';
 import Login from './Login';
 import { useSelector, useDispatch } from 'react-redux';
+import { RootState } from '../reducers';
 
 const Header = () => {
   const [open, setOpen] = useState(false)
   const [open1, setOpen1] = useState(false)
   const [signUp1, setSignUp1] = useState(true)
   const [signUp2, setSignUp2] = useState(false)
-  const userName = useSelector((state: UserState) => state.firstName)
-  const id1 = useSelector((state: UserState) => state.id)
-  const id = useSelector((state: UserState) => state.id)
+  const userName = useSelector((state: RootState) => state.user.firstName)
+  const id = useSelector((state: RootState) => state.user.id)
   const dispatch = useDispatch()
+  const state = useSelector((state: RootState) => state.search.checkIn)
+
+  console.log(state)
 
   const handleOpen = () => {
     setOpen(!open)
@@ -36,13 +39,15 @@ const Header = () => {
     dispatch({ type: 'logOut' })
   }
 
+  console.log(userName)
+
   return (
     <>
     <div className="bg-[#bff3f6] xs:w-[1400px] md:w-[1440px] font-['DM Sans'] h-[67px]">
       <Link href='/'>
         <p className="text-[#176d73] xs:text-3xl absolute top-2 ml-8 text-4xl">HotelBooking</p>
       </Link>
-      {id1 === "" ? (
+      {userName === "" ? (
         <>
         <button className="text-[#176d73] md:w-[100px] absolute xs:w-[100px] top-4 ml-[1100px] text-xl" onClick={handleOpen}>
           Sign Up

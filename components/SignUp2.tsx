@@ -2,6 +2,7 @@ import { useRouter } from 'next/router'
 import React, { useState } from 'react'
 import { AiOutlineClose } from 'react-icons/ai'
 import { useSelector, useDispatch } from 'react-redux'
+import { RootState } from '../reducers'
 
 const SignUp2 = ({ handleOpen }: any) => {
   const [confirmEmail, setConfirmEmail] = useState('')
@@ -9,7 +10,7 @@ const SignUp2 = ({ handleOpen }: any) => {
   const [firstName, setFirstName] = useState('')
   const [lastName, setLastName] = useState('')
   const dispatch = useDispatch()
-  const email = useSelector((state: SignUpState) => state.email)
+  const email = useSelector((state: RootState) => state.signUp.email)
   const router = useRouter()
   
   const handlePassword = (e: React.ChangeEvent<HTMLInputElement>) => {

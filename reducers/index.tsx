@@ -11,9 +11,13 @@ export interface AppState {
   user: UserState
 }
 
-export default combineReducers({
+const reducers = combineReducers({
   search: searchReducer,
   pageSearch: PageSearchReducer,
   signUp: SignUpReducer,
   user: UserReducer
 })
+
+export default reducers
+
+export type RootState = ReturnType<typeof reducers>

@@ -6,14 +6,15 @@ AiOutlineMinus } from 'react-icons/ai';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import { url } from '../baseUrl';
+import { RootState } from '../reducers';
 
 const Searchbar = (hotel: any) => {
   const [hotelData, setHotelData] = useState([])
   const dispatch = useDispatch()
-  const city = useSelector((state: SearchState) => state.city)
-  const checkIn = useSelector((state: SearchState) => state.checkIn)
-  const checkOut = useSelector((state: SearchState) => state.checkOut)
-  const guests = useSelector((state: SearchState) => state.guests)
+  const city = useSelector((state: RootState) => state.search.city)
+  const checkIn = useSelector((state: RootState) => state.search.checkIn)
+  const checkOut = useSelector((state: RootState) => state.search.checkOut)
+  const guests = useSelector((state: RootState) => state.search.guests)
 
   useEffect(() => {
     axios.get(`${url}/hotels`)

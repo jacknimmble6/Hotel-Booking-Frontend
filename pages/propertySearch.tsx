@@ -6,26 +6,27 @@ import { url } from '../baseUrl';
 import FilteredHotel from '../components/FilteredHotel';
 import Header from '../components/Header';
 import Map from '../components/Map';
+import { RootState } from '../reducers';
 
 const PropertySearch = (hotel:any) => {
-  const guests = useSelector((state: SearchState) => state.guests)
-  const searchText = useSelector((state: SearchState) => state.city)   
+  const guests = useSelector((state: RootState) => state.search.guests)
+  const searchText = useSelector((state: RootState) => state.search.city)   
   const dispatch = useDispatch()
   const [open, setOpen] = useState(false)
   const [open2, setOpen2] = useState(false)
-  const beds = useSelector((state: SearchState) => state.beds)
-  const bathrooms = useSelector((state: SearchState) => state.bathrooms)
-  const bedrooms = useSelector((state: SearchState) => state.bedrooms)
-  const checkIn = useSelector((state: SearchState) => state.checkIn)
-  const checkOut = useSelector((state: SearchState) => state.checkOut)
-  const airConditioning = useSelector((state: SearchState) => state.airConditioning)
-  const elevatorAccess = useSelector((state: SearchState) => state.elevatorAccess)
-  const parking = useSelector((state: SearchState) => state.parking)
-  const outdoorSpace = useSelector((state: SearchState) => state.outdoorSpace)
-  const kidFriendly = useSelector((state: SearchState) => state.kidFriendly)
-  const inSuiteLaundry = useSelector((state: SearchState) => state.inSuiteLaundry)
-  const priceMin = useSelector((state: SearchState) => state.priceMin)
-  const priceMax = useSelector((state: SearchState) => state.priceMax)
+  const beds = useSelector((state: RootState) => state.search.beds)
+  const bathrooms = useSelector((state: RootState) => state.search.bathrooms)
+  const bedrooms = useSelector((state: RootState) => state.search.bedrooms)
+  const checkIn = useSelector((state: RootState) => state.search.checkIn)
+  const checkOut = useSelector((state: RootState) => state.search.checkOut)
+  const airConditioning = useSelector((state: RootState) => state.search.airConditioning)
+  const elevatorAccess = useSelector((state: RootState) => state.search.elevatorAccess)
+  const parking = useSelector((state: RootState) => state.search.parking)
+  const outdoorSpace = useSelector((state: RootState) => state.search.outdoorSpace)
+  const kidFriendly = useSelector((state: RootState) => state.search.kidFriendly)
+  const inSuiteLaundry = useSelector((state: RootState) => state.search.inSuiteLaundry)
+  const priceMin = useSelector((state: RootState) => state.search.priceMin)
+  const priceMax = useSelector((state: RootState) => state.search.priceMax)
 
   const hotelGuests = hotel.hotel.filter((hotel: { city: string; }) => hotel.city === searchText)
   .map((hotel: { rooms: any; }) => hotel.rooms)?.[0]?.[0]?.numberOfGuests

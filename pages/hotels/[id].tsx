@@ -22,6 +22,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import Link from 'next/link'
 import { url } from '../../baseUrl'
 import Head from 'next/head'
+import { RootState } from '../../reducers'
 
 const Hotel = () => {
   const [hotelData, setHotelData] = useState<any>({})
@@ -39,11 +40,11 @@ const Hotel = () => {
   const { push } = useRouter()
   const { id } = router.query
   const dispatch = useDispatch()
-  const checkIn = useSelector((state: PageSearchState) => state.checkIn)
-  const checkOut = useSelector((state: PageSearchState) => state.checkOut)
-  const guests = useSelector((state: PageSearchState) => state.guests)
-  const priceMin = useSelector((state: PageSearchState) => state.priceMin)
-  const priceMax = useSelector((state: PageSearchState) => state.priceMax)
+  const checkIn = useSelector((state: RootState) => state.pageSearch.checkIn)
+  const checkOut = useSelector((state: RootState) => state.pageSearch.checkOut)
+  const guests = useSelector((state: RootState) => state.pageSearch.guests)
+  const priceMin = useSelector((state: RootState) => state.pageSearch.priceMin)
+  const priceMax = useSelector((state: RootState) => state.pageSearch.priceMax)
   
   useEffect(() => {
     if(!id) {

@@ -9,13 +9,14 @@ import Payment from '../../components/Payment'
 import Form from '../../components/Form'
 import { url } from '../../baseUrl'
 import Head from 'next/head'
+import { RootState } from '../../reducers'
 
 const BookingPage = () => {
   const [hotelData, setHotelData] = useState<any>({})
   const router = useRouter()
   const { id } = router.query
-  const checkIn = useSelector((state: PageSearchState) => state.checkIn)
-  const checkOut = useSelector((state: PageSearchState) => state.checkOut)
+  const checkIn = useSelector((state: RootState) => state.pageSearch.checkIn)
+  const checkOut = useSelector((state: RootState) => state.pageSearch.checkOut)
   const [false1, setFalse1] = useState(false)
 
   useEffect(() => {

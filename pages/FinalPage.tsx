@@ -3,17 +3,18 @@ import { useDispatch, useSelector } from 'react-redux'
 import Header from '../components/Header'
 import axios from 'axios'
 import { url } from '../baseUrl'
+import { RootState } from '../reducers'
 
 const FinalPage = () => {
   const [date, setDate] = useState<any>(new Date())
   const dispatch = useDispatch()
-  const firstName = useSelector((state: SignUpState) => state.firstName)
-  const lastName = useSelector((state: SignUpState) => state.lastName)
-  const email = useSelector((state: SignUpState) => state.email)
-  const birthDay = useSelector((state: SignUpState) => state.birthDay)
-  const birthMonth = useSelector((state: SignUpState) => state.birthMonth)
-  const birthYear = useSelector((state: SignUpState) => state.birthYear)
-  const password = useSelector((state: SignUpState) => state.password)
+  const firstName = useSelector((state: RootState) => state.signUp.firstName)
+  const lastName = useSelector((state: RootState) => state.signUp.lastName)
+  const email = useSelector((state: RootState) => state.signUp.email)
+  const birthDay = useSelector((state: RootState) => state.signUp.birthDay)
+  const birthMonth = useSelector((state: RootState) => state.signUp.birthMonth)
+  const birthYear = useSelector((state: RootState) => state.signUp.birthYear)
+  const password = useSelector((state: RootState) => state.signUp.password)
 
   const getAge = () => {
     const birthDay = new Date(date).getTime()

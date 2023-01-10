@@ -1,14 +1,15 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { RootState } from '../reducers'
 
 const Form = ({ setFalse1 }: any) => {
   const dispatch = useDispatch()
-  const firstName = useSelector((state: UserState) => state.firstName)
-  const lastName = useSelector((state: UserState) => state.lastName)
-  const email = useSelector((state: UserState) => state.email)
-  const birthMonth = useSelector((state: UserState) => state.birthMonth)
-  const birthYear = useSelector((state: UserState) => state.birthYear)
-  const birthDay = useSelector((state: UserState) => state.birthDay)
+  const firstName = useSelector((state: RootState) => state.user.firstName)
+  const lastName = useSelector((state: RootState) => state.user.lastName)
+  const email = useSelector((state: RootState) => state.user.email)
+  const birthMonth = useSelector((state: RootState) => state.user.birthMonth)
+  const birthYear = useSelector((state: RootState) => state.user.birthYear)
+  const birthDay = useSelector((state: RootState) => state.user.birthDay)
   const [confirmEmail, setConfirmEmail] = useState('')
 
   const handleEmail = (e: { target: { value: any } }) => {

@@ -46,6 +46,8 @@ const UserPage = () => {
 
   const deleteUser = () => {
     axios.delete(`${url}/users/${id}`)
+    dispatch({ type: 'logOut' })
+    router.push('/')
   }
 
   const updateUser = () => {
