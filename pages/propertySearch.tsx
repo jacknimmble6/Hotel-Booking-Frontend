@@ -1,5 +1,6 @@
+import axios from 'axios';
 import Head from 'next/head';
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { AiOutlineArrowRight, AiOutlineMinus, AiOutlinePlus, AiOutlineSearch } from 'react-icons/ai';
 import { useDispatch, useSelector } from 'react-redux';
 import { url } from '../baseUrl';
@@ -8,7 +9,8 @@ import Header from '../components/Header';
 import Map from '../components/Map';
 import { RootState } from '../reducers';
 
-const PropertySearch = (hotel:any) => {
+const PropertySearch = () => {
+  const [hotel, setHotel] = useState<any>({})
   const guests = useSelector((state: RootState) => state.search.guests)
   const searchText = useSelector((state: RootState) => state.search.city)   
   const dispatch = useDispatch()
@@ -28,6 +30,16 @@ const PropertySearch = (hotel:any) => {
   const priceMin = useSelector((state: RootState) => state.search.priceMin)
   const priceMax = useSelector((state: RootState) => state.search.priceMax)
 
+  useEffect(() => {
+    const fetch = async () => {
+      await axios.get(`${url}/hotels`)
+      .then(res => setHotel({hotel: res.data}))
+    }
+    fetch()
+
+    dispatch({ type: 'erase1'})
+  }, [dispatch])
+  
   const hotelGuests = hotel.hotel.filter((hotel: { city: string; }) => hotel.city === searchText)
   .map((hotel: { rooms: any; }) => hotel.rooms)?.[0]?.[0]?.numberOfGuests
 
