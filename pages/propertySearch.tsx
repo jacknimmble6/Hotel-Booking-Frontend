@@ -30,7 +30,7 @@ const PropertySearch = () => {
   const priceMin = useSelector((state: RootState) => state.search.priceMin)
   const priceMax = useSelector((state: RootState) => state.search.priceMax)
 
-  useEffect(() => {
+  {/*useEffect(() => {
     const fetch = async () => {
       await axios.get(`${url}/hotels`)
       .then(res => setHotel({hotel: res.data}))
@@ -38,7 +38,7 @@ const PropertySearch = () => {
     fetch()
 
     dispatch({ type: 'erase1'})
-  }, [dispatch])
+  }, [dispatch]) */}
   
   const hotelGuests = hotel.hotel.filter((hotel: { city: string; }) => hotel.city === searchText)
   .map((hotel: { rooms: any; }) => hotel.rooms)?.[0]?.[0]?.numberOfGuests
