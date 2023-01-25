@@ -11,6 +11,7 @@ import { PersistGate } from 'redux-persist/integration/react';
 import './styless.css'
 import { GoogleOAuthProvider } from '@react-oauth/google'
 import '../styles/sty.css'
+import ErrorBoundary from '../errorBoundary'
 
 const persistConfig = {
   key: 'root',
@@ -28,7 +29,9 @@ export default function App({ Component, pageProps }: AppProps) {
     <GoogleOAuthProvider clientId={process.env.NEXT_PUBLIC_GOOGLE_ID || ''}>
       <Provider store={store}>
         <PersistGate loading={null} persistor={persistor}>
-          <Component {...pageProps} />
+          <ErrorBoundary>
+            <Component {...pageProps} />
+          </ErrorBoundary>
         </PersistGate>
       </Provider>
     </GoogleOAuthProvider>
