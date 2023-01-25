@@ -4,6 +4,7 @@ import { CardElement, Elements, useElements, useStripe } from "@stripe/react-str
 import axios from "axios";
 import { useSelector } from "react-redux";
 import { url } from "../baseUrl";
+import { RootState } from "../reducers";
 
 const CARD_OPTIONS = {
   iconStyle: "solid" as const,
@@ -105,7 +106,7 @@ const CheckoutForm = ({ price, false1, roomName, roomNumber, updateData, hotelId
   const elements = useElements();
   const [error, setError] = useState<any>(null);
   const [cardComplete, setCardComplete] = useState(false);
-  const id = useSelector((state: UserState) => state.id)
+  const id = useSelector((state: RootState) => state.user.id)
   const [processing, setProcessing] = useState(false);
   const [paymentMethod, setPaymentMethod] = useState<any>(null);
   const [billingDetails, setBillingDetails] = useState({
@@ -113,8 +114,8 @@ const CheckoutForm = ({ price, false1, roomName, roomNumber, updateData, hotelId
     phone: "",
     name: ""
   });
-  const checkIn = useSelector((state: PageSearchState) => state.checkIn)
-  const checkOut = useSelector((state: PageSearchState) => state.checkOut)
+  const checkIn = useSelector((state: RootState) => state.pageSearch.checkIn)
+  const checkOut = useSelector((state: RootState) => state.pageSearch.checkOut)
 
   const handleSubmit = async (event: { preventDefault: () => void; }) => {
     event.preventDefault();
@@ -286,7 +287,7 @@ const ELEMENTS_OPTIONS = {
   ]
 };
 
-const stripePromise = loadStripe(`pk_test_6pRNASCoBOKtIshFeQd4XMUh`);
+const stripePromise = loadStripe(`${process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY}`);
 
 const Payment = ({price, false1, roomName, roomNumber, updateData, hotelId }: any) => {
   return (
