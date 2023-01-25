@@ -6,11 +6,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import { url } from '../baseUrl';
 import FilteredHotel from '../components/FilteredHotel';
 import Header from '../components/Header';
+import Loading from '../components/Loading';
 import Map from '../components/Map';
-import { hotels } from '../hotels';
 import { RootState } from '../reducers';
 
-const PropertySearch = ({/*hotel:any*/}) => {
+const PropertySearch = () => {
   const guests = useSelector((state: RootState) => state.search.guests)
   const searchText = useSelector((state: RootState) => state.search.city)   
   const dispatch = useDispatch()
@@ -227,12 +227,14 @@ const PropertySearch = ({/*hotel:any*/}) => {
     <div className='grid-cols-2 grid-rows-3'>
       <Head>
         <title>Hotel Search</title>
-      </Head>
-
+      </Head>     
+      
       <div className='col-span-2 row-span-1'>
         <Header />
       </div>
-      
+
+      {hotel.hotel.length === 0 ? <Loading /> : (
+      <>
       <div className="col-span-2 row-span-2">
         <AiOutlineSearch className="text-[#2f5253] absolute top-[105px] ml-[40px] text-4xl"/>
       
@@ -381,23 +383,11 @@ const PropertySearch = ({/*hotel:any*/}) => {
       </div>
       <div className="col-span-1 row-span-1">
         <FilteredHotel hotelData={dateFilter} />
-      </div>
+      </div>  
+      </>
+      )}
     </div>
   )
 }
-
-{/*export const getServerSideProps = async () => {
-  const hotel = await axios.get(
-    `${url}/hotels`
-  ).then(res => res.data)
-
-  console.log(hotel);
-
-  return {
-    props: {
-      hotel,
-    },
-  };
-}; */}
 
 export default PropertySearch
