@@ -386,6 +386,8 @@ export const getServerSideProps = async () => {
 
   console.log(hotel);
   */}
+
+  console.log(hotels)
   return {
     props: {
       hotels,
