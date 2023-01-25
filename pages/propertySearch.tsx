@@ -377,7 +377,7 @@ const PropertySearch = (hotel:any) => {
   )
 }
 
-export const getServerSideProps = async () => {
+{/*export const getServerSideProps = async () => {
   const res = await fetch(
     `${url}/hotels`
   );
@@ -390,6 +390,6 @@ export const getServerSideProps = async () => {
       hotel,
     },
   };
-};
+};*/}
 
 export default PropertySearch
