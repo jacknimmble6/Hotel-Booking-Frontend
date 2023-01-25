@@ -1,3 +1,4 @@
+import axios from 'axios';
 import Head from 'next/head';
 import React, { useState } from 'react'
 import { AiOutlineArrowRight, AiOutlineMinus, AiOutlinePlus, AiOutlineSearch } from 'react-icons/ai';
@@ -379,18 +380,15 @@ const PropertySearch = (hotel:any) => {
 }
 
 export const getServerSideProps = async () => {
-  {/*const res = await fetch(
+  const hotel = await axios.get(
     `${url}/hotels`
-  );
-  const hotel = await res.json()
+  ).then(res => res.data)
 
   console.log(hotel);
-  */}
 
-  console.log(hotels)
   return {
     props: {
-      hotels,
+      hotel,
     },
   };
 };
