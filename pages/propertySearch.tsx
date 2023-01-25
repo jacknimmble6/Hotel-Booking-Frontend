@@ -6,6 +6,7 @@ import { url } from '../baseUrl';
 import FilteredHotel from '../components/FilteredHotel';
 import Header from '../components/Header';
 import Map from '../components/Map';
+import { hotels } from '../hotels';
 import { RootState } from '../reducers';
 
 const PropertySearch = (hotel:any) => {
@@ -377,19 +378,19 @@ const PropertySearch = (hotel:any) => {
   )
 }
 
-{/*export const getServerSideProps = async () => {
-  const res = await fetch(
+export const getServerSideProps = async () => {
+  {/*const res = await fetch(
     `${url}/hotels`
   );
   const hotel = await res.json()
 
   console.log(hotel);
-  
+  */}
   return {
     props: {
-      hotel,
+      hotels,
     },
   };
-};*/}
+};
 
 export default PropertySearch

@@ -16,6 +16,6 @@
     "incremental": true,
     "useUnknownInCatchVariables": false
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "errorBoundary.tsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "errorBoundary.tsx", "pages/500.ts"],
   "exclude": ["node_modules"]
 }
