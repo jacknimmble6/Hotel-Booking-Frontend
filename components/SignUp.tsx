@@ -42,7 +42,7 @@ const SignUp = ({ handleOpen, handleStep }: any) => {
         </button>
         <p className='text-center mt-4 text-[#176d73] md:mt-16 xs:mt-16'>or continue with</p> 
         <div className='ml-16 mt-8 xs:mt-16 md:mt-16 md:ml-48 xs:ml-48 rounded-full'>
-          <div className='ml-[20px]'>     
+        <div className='ml-[20px]'>     
           <GoogleLogin
             onSuccess={credentialResponse => {
               setGoogleToken(jwt_decode(credentialResponse.credential!))
