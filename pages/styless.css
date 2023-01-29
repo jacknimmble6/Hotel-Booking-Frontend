@@ -23,7 +23,12 @@ input[type="range"] {
     display: inline-flex
   }
 
-  
+  @media screen and (min-width: 768px) {
+    input[type="date"] {
+      display: inline-flex
+    }    
+  }
+
   input[type=range]::-moz-range-thumb {
     -webkit-appearance: none;
     pointer-events: all;
