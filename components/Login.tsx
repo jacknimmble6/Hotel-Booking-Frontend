@@ -11,11 +11,9 @@ const Login = ({ handleOpen1 }: any) => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [signInWithGoogle, setSignInWithGoogle] = useState(false)
+  const [showError, setShowError] = useState(false)
   const dispatch = useDispatch()
   const router = useRouter()
-  const { asPath } = useRouter() 
-
-  console.log(asPath)
 
   const handleLogIn = (data: any) => {
     if (password === process.env.NEXT_PUBLIC_PASSWORD && email === process.env.NEXT_PUBLIC_ADMIN) {
@@ -25,7 +23,8 @@ const Login = ({ handleOpen1 }: any) => {
     if (signInWithGoogle === true) {
       axios.post(`${url}/users/google`, data)
       .then(res => {
-        res.data.firstName === '' ? alert('User not found') : (
+        res.data === "" ? setShowError(true) : setShowError(false)
+        try {
           dispatch({ type: 'loginUser', payload: { 
             firstName: res.data.firstName, 
             lastName: res.data.lastName, 
@@ -36,7 +35,9 @@ const Login = ({ handleOpen1 }: any) => {
             birthMonth: res.data.birthMonth,
             birthYear: res.data.birthYear
           }})
-        )     
+        } catch (error) {
+          console.log(error.message)
+        }
       })   
     } else {
       const data = {
@@ -45,18 +46,18 @@ const Login = ({ handleOpen1 }: any) => {
       }
       axios.post(`${url}/users/user`, data)
       .then(res => {
-        res.data.firstName === '' ? alert('User not found') : (
-            dispatch({ type: 'loginUser', payload: { 
-              firstName: res.data.firstName, 
-              lastName: res.data.lastName, 
-              password: res.data.password,
-              email: res.data.email,
-              id: res.data._id,
-              birthDay: res.data.birthDay,
-              birthMonth: res.data.birthMonth,
-              birthYear: res.data.birthYear
-            }})
-        )     
+          res.data === "" ? setShowError(true) : setShowError(false)
+          dispatch({ type: 'loginUser', payload: { 
+            firstName: res.data.firstName, 
+            lastName: res.data.lastName, 
+            password: res.data.password,
+            email: res.data.email,
+            id: res.data._id,
+            birthDay: res.data.birthDay,
+            birthMonth: res.data.birthMonth,
+            birthYear: res.data.birthYear
+          }})   
+          
       })
     }
 
@@ -109,6 +110,13 @@ const Login = ({ handleOpen1 }: any) => {
             width='320'
           />
         </div>
+        
+        {showError ? (
+          <p className="text-red-800 text-2xl text-center mt-8">
+            User not found!
+          </p>
+          ) : ''
+        }
       </div>
     </div>
   )

@@ -14,9 +14,6 @@ const Header = () => {
   const userName = useSelector((state: RootState) => state.user.firstName)
   const id = useSelector((state: RootState) => state.user.id)
   const dispatch = useDispatch()
-  const state = useSelector((state: RootState) => state.search.checkIn)
-
-  console.log(state)
 
   const handleOpen = () => {
     setOpen(!open)
@@ -38,8 +35,6 @@ const Header = () => {
   const logout = () => {
     dispatch({ type: 'logOut' })
   }
-
-  console.log(userName)
 
   return (
     <>
