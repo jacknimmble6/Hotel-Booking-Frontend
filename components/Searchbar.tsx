@@ -56,14 +56,14 @@ const Searchbar = (hotel: any) => {
         {hotelData.map((h: any) => <option key={h._id}>{h.city}</option>)}
       </datalist>
       
-      <input type='date' value={checkIn} className="absolute xs:text-black h-16 xs:bg-[#176d73] bg-[#176d73] mt-8" 
+      <input type='date' value={checkIn} className="absolute xs:text-black h-16 xs:border xs:border-[#176d73] bg-[#176d73] mt-8" 
       onChange={addCheckIn}/>
 
       <p className="bg-[#176d73] -mt-[64px] h-16 w-16 ml-[560px]">
         <AiOutlineArrowRight className=" absolute mt-[20px] z-0 text-2xl w-16 ml-[0px]"/>
       </p>
 
-      <input type='date' value={checkOut} className="absolute font-sans ml-[620px] h-16 bg-[#176d73] -mt-16" 
+      <input type='date' value={checkOut} className="absolute font-sans xs:border xs:border-[#176d73] ml-[620px] h-16 bg-[#176d73] -mt-16" 
       onChange={addCheckOut}/>
 
       <div className="bg-[#176d73] w-[490px] -mt-16 h-16 rounded-r-full ml-[756px]">
