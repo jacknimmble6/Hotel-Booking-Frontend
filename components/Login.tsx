@@ -25,7 +25,7 @@ const Login = ({ handleOpen1 }: any) => {
     if (signInWithGoogle === true) {
       axios.post(`${url}/users/google`, data)
       .then(res => {
-        try {
+        res.data.firstName === '' ? alert('User not found') : (
           dispatch({ type: 'loginUser', payload: { 
             firstName: res.data.firstName, 
             lastName: res.data.lastName, 
@@ -36,10 +36,7 @@ const Login = ({ handleOpen1 }: any) => {
             birthMonth: res.data.birthMonth,
             birthYear: res.data.birthYear
           }})
-        } catch (error) {
-          console.log(error.message)
-        }
-        
+        )     
       })   
     } else {
       const data = {
@@ -48,21 +45,18 @@ const Login = ({ handleOpen1 }: any) => {
       }
       axios.post(`${url}/users/user`, data)
       .then(res => {
-        try {
-          dispatch({ type: 'loginUser', payload: { 
-            firstName: res.data.firstName, 
-            lastName: res.data.lastName, 
-            password: res.data.password,
-            email: res.data.email,
-            id: res.data._id,
-            birthDay: res.data.birthDay,
-            birthMonth: res.data.birthMonth,
-            birthYear: res.data.birthYear
-          }})
-        } catch (error) {
-          console.log(error.message)
-        }
-        
+        res.data.firstName === '' ? alert('User not found') : (
+            dispatch({ type: 'loginUser', payload: { 
+              firstName: res.data.firstName, 
+              lastName: res.data.lastName, 
+              password: res.data.password,
+              email: res.data.email,
+              id: res.data._id,
+              birthDay: res.data.birthDay,
+              birthMonth: res.data.birthMonth,
+              birthYear: res.data.birthYear
+            }})
+        )     
       })
     }
 
