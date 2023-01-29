@@ -56,7 +56,7 @@ const Searchbar = (hotel: any) => {
         {hotelData.map((h: any) => <option key={h._id}>{h.city}</option>)}
       </datalist>
       
-      <input type='date' value={checkIn} className="absolute xs:text-black h-16 xs:w-[100px] bg-[#176d73] mt-8" 
+      <input type='date' value={checkIn} className="absolute xs:text-black h-16 xs:bg-[#176d73] bg-[#176d73] mt-8" 
       onChange={addCheckIn}/>
 
       <p className="bg-[#176d73] -mt-[64px] h-16 w-16 ml-[560px]">
