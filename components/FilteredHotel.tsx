@@ -84,7 +84,7 @@ const FilteredHotel = ({ hotelData }: any) => {
                     <>
                       <Image src={x} className="-mt-[145px] z-0 select-none h-[280px] rounded-3xl ml-8" 
                       alt="Picture" width={450} height={280}/>
-                      {imageNumber >= 4 ? '' : 
+                      {imageNumber >= 3 ? '' : 
                         <IoChevronForwardCircleOutline className="absolute text-5xl xs:ml-[350px] ml-[430px] -mt-40 text-[#176d73]" 
                         onClick={() => forward(hotel._id)}/>
                       }
