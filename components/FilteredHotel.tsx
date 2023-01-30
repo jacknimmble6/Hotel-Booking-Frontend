@@ -11,7 +11,7 @@ const FilteredHotel = ({ hotelData }: any) => {
   
   const forward = (id: any) => {
     if (imageNumber >= 4) {
-      return null
+      return;
     }
     if (hotelData.filter((h: { _id: any; }) => h._id === id)) {
       setImageNumber(imageNumber + 1)
@@ -25,7 +25,7 @@ const FilteredHotel = ({ hotelData }: any) => {
 
   const backward = () => {
     if (imageNumber <= 0) {
-      return null
+      return;
     } else {
       setImageNumber(imageNumber - 1)
     }

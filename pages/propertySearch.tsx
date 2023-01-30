@@ -37,6 +37,7 @@ const PropertySearch = () => {
   
   }, [])
   
+  console.log(hotel)
   const hotelGuests = hotel.hotel.filter((hotel: { city: string; }) => hotel.city === searchText)
   .map((hotel: { rooms: any; }) => hotel.rooms)?.[0]?.[0]?.numberOfGuests
 
